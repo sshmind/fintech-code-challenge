@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     networks:
-      - redis_updater-network
+      - redis_redis-network
 
 networks:
-  redis_updater-network:
+  redis_redis-network:
     external: true
