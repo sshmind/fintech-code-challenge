@@ -20,11 +20,11 @@ def save_data_to_redis(csv_row, current_time_str):
                 new_time = csv_row[0][:2] + ':' + csv_row[0][2:4] + ':' + csv_row[0][4:]
                 if data['time'][-1] != new_time:
                     data['time'].append(new_time)
-                    data['price'].append(csv_row[2])
+                    data['price'].append(int(csv_row[2]))
                     print(f'Added new price and time for stock! | stock-name: {stock}')
                 else:
                     print(f'The price of an old time was updated ! | stock-name: {stock}')
-                    data['price'][-1] = csv_row[2]
+                    data['price'][-1] = int(csv_row[2])
 
                 process = multiprocessing.Process(target=calculate_performance, args=(stock,))
                 process.start()
