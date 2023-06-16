@@ -1,0 +1,4 @@
+django
+djangorestframework
+confluent-kafka
+redis
