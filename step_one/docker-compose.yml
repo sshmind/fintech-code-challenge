@@ -1,0 +1,12 @@
+version: '3'
+services:
+  updater:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - redis_updater-network
+
+networks:
+  redis_updater-network:
+    external: true
