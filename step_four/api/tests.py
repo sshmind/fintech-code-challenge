@@ -7,7 +7,7 @@ import json
 class BustStockAPITests(TestCase):
 
 
-    @patch('utils.redis.Redis')
+    @patch('utils.helper_functions.Redis')
     def test_accepted_response(self, mock_redis):
 
         mock_client = mock_redis.return_value
@@ -22,9 +22,9 @@ class BustStockAPITests(TestCase):
                                                                   'quantity': 1})
         
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data['message'], 'ACCEPTED')
+        self.assertEqual(response.data['msg'], 'ACCEPTED')
     
-    @patch('utils.redis.Redis')
+    @patch('utils.helper_functions.Redis')
     def test_low_user_credit(self, mock_redis):
         mock_client = mock_redis.return_value
 
@@ -38,7 +38,7 @@ class BustStockAPITests(TestCase):
                                                                   'quantity': 1})
         
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(response.data['message'], "user doesn't have enough credit!")
+        self.assertEqual(response.data['msg'], "Your credit for the purchase is low!")
     
     def test_api_serializer_for_invalid_user_account(self):
 
