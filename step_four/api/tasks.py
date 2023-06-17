@@ -8,7 +8,7 @@ from celery.exceptions import SoftTimeLimitExceeded
 from utils import check_user_credentials
 
 
-@shared_task(bind=True, time_limit=5)
+@shared_task(bind=True)
 def verify_user_async(self, purchase_data, response_data, status_code):
     # Perform the user verification
     verification_result = check_user_credentials(purchase_data['user'], purchase_data['stockname'], purchase_data['quantity'], 2)
