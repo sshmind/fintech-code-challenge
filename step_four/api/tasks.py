@@ -5,7 +5,7 @@ from celery import shared_task
 import json
 from celery.exceptions import SoftTimeLimitExceeded
 
-from utils import check_user_credentials
+from utils.helper_functions import check_user_credentials
 
 
 @shared_task(bind=True)
