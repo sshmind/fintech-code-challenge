@@ -14,7 +14,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 
-p = Producer({'bootstrap.servers': 'kafka:9092'})
+p = Producer({'bootstrap.servers': '127.0.0.1:9092'})
 print('kafka producer has been initiated ...')
 
 
@@ -42,7 +42,7 @@ def read_csv_file(file_path: str):
 
 
 def config_redis_for_start_line(number, edit_mode=False):
-    redis_client = Redis(host='redis', port='6379', db=0)
+    redis_client = Redis(host='127.0.0.1', port='6379', db=0)
     start_line = redis_client.get('start_line')
 
     if start_line is None or edit_mode:
