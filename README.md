@@ -62,3 +62,12 @@ Run Celery workers:
 celery -A config worker -l info --beat
 ```
 Both of these commands must be executed inside the step_four directory.
+Next, send a request to the address below to check the fourth challenge:
+```sh
+http://127.0.0.1:8000/api/buy-stock/
+```
+send a request to the following address to test the fifth challenge solution:
+```sh
+http://127.0.0.1:8000/api/buy-stock-v2/
+```
+And for the final answer of the user operation, you should check the celery logs...
