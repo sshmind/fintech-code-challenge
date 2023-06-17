@@ -1,0 +1,15 @@
+version: '3'
+services:
+  producer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - redis_redis-network
+      - kafka_kafka-network
+
+networks:
+  kafka_kafka-network:
+    external: true
+  redis_redis-network:
+    external: true
