@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import BuyStockAPISerializer
-from utils import check_user_credentials
+from utils.helper_functions import check_user_credentials
 from .tasks import verify_user_async
 
 
@@ -15,7 +15,7 @@ class BuyStockAPIView(APIView):
         purchase_data = serializer.data
         if check_user_credentials(purchase_data['user'], purchase_data['stockname'], purchase_data['quantity']):
             
-            return Response(status=status.HTTP_200_OK, data={'msg': 'Accepted'})
+            return Response(status=status.HTTP_200_OK, data={'msg': 'ACCEPTED'})
         
         return Response(status=status.HTTP_403_FORBIDDEN, data={'msg': 'Your credit for the purchase is low!'})
     

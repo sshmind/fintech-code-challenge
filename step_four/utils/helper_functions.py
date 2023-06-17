@@ -8,7 +8,6 @@ def check_user_credentials(username, stockname, quantity, api_version=1):
     user_state_result = 1
     if api_version == 2:
         user_state_result = verify_user(username)
-    print(user_state_result, '------------------------------')
     if user_state_result:
         redis_client = Redis(host='127.0.0.1', port='6379', db='0')
         user_account = redis_client.get(username)
@@ -23,7 +22,6 @@ def check_user_credentials(username, stockname, quantity, api_version=1):
 
         price_list = [x for x in stock_data['price'] if x != ""]
         last_stock_price = price_list[-1]
-        print(last_stock_price)
         
         final_price_for_user = last_stock_price * quantity
 
